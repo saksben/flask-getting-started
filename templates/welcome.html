@@ -1,0 +1,28 @@
+<!-- Tells Jinja that I want this to be the child template of base.html -->
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <h1>Welcome to my page!</h1>
+    <p>
+        This is the demo application for the course
+        <em>Getting Started with Flask</em>
+        on <a href="https://www.pluralsight.com">Pluralsight</a>.
+    </p>
+    <img src="/static/flasklogo.png">
+    <p>{{message}}</p>
+
+    <h2>Flash Cards</h2>
+    <ul>
+        {% for card in cards %}
+            <li>
+                <a href="{{ url_for('card_view', index=loop.index0) }}"> <!--for loop for index, starting at index==0-->
+                    {{ card.question }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}
